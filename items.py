@@ -10,6 +10,9 @@ if node.metadata.get('php-fpm', False):
         actions['dotdeb_trustkey'] = {
             'command': "wget https://www.dotdeb.org/dotdeb.gpg && apt-key add dotdeb.gpg",
             'triggered': True,
+            'triggers': {
+                'action:force_update_apt_cache',
+            }
         }
         files['/etc/apt/sources.list.d/dotdeb.list'] = {
             'content': "deb http://packages.dotdeb.org jessie all\n"\
@@ -19,7 +22,6 @@ if node.metadata.get('php-fpm', False):
             'group': 'root',
             'triggers': {
                 'action:dotdeb_trustkey',
-                'action:force_update_apt_cache'
             },
             'needed_by': {
                 'pkg_apt:',
