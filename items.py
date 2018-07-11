@@ -23,6 +23,6 @@ for pool_name,pool in node.metadata.get('php-fpm', {}).get('pools', {}).items():
             'pool': pool,
         },
         'triggers': [
-            'svc_systemv:php7.0-fpm:reload',
+            'svc_systemv:php7.0-fpm:restart',
         ],
     }
