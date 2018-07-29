@@ -1,8 +1,9 @@
 pkg_apt = {
     'php-fpm': {},
 }
-svc_systemv = {
+svc_systemd = {
     'php7.0-fpm': {
+        'enabled': True,
         'needs': [
             'pkg_apt:php-fpm',
         ],
@@ -23,6 +24,6 @@ for pool_name,pool in node.metadata.get('php-fpm', {}).get('pools', {}).items():
             'pool': pool,
         },
         'triggers': [
-            'svc_systemv:php7.0-fpm:restart',
+            'svc_systemd:php7.0-fpm:restart',
         ],
     }
