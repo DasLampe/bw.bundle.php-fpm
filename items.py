@@ -12,6 +12,9 @@ svc_systemd = {
 
 files = {}
 
+for ext in node.metadata.get('php-fpm', {}).get('extensions', []):
+    pkg_apt[ext] = {}
+
 for pool_name,pool in node.metadata.get('php-fpm', {}).get('pools', {}).items():
     files['/etc/php/7.0/fpm/pool.d/{}.conf'.format(pool_name)] = {
         'source': 'etc/php/7.0/fpm/pool.d/pool.conf',
