@@ -3,6 +3,9 @@ Install php7.0-fpm on Debian Stretch
 
 __Don't use this for production! It's still work in progress!__
 
+## Dependencies
+[apt-Bundle](https://github.com/sHorst/bw.bundle.apt)
+
 ## Metadata
 ```python
     'php-fpm': {
