@@ -14,7 +14,7 @@ def add_extensions_apt_packages(metadata):
         metadata.setdefault('apt', {})
         metadata['apt'].setdefault('packages', {})
 
-        for ext in node.metadata.get('php-fpm', {}).get('extensions', []):
+        for ext in metadata.get('php-fpm', {}).get('extensions', []):
             metadata['apt']['packages'][ext] = {'installed': True}
 
     return metadata, DONE
